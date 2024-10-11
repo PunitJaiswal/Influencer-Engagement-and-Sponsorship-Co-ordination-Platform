@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor's Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="login_form">
+            <form action="/sponsor/{{spon.id}}/create_request/{{inf.id}}" method="POST" class="input_box">
+                <h3>{{msg}}</h3>
+                <h1><u>Send Ad Request</u></h1>
+                <h3>{{msg}}</h3>
+                <br>
+                <p class="sub_heading">Select Campaign : 
+                    <select name="select_campaign" id="usertype">
+                        {% for camp in camps %}
+                        <option value="{{camp.name}}">{{camp.name}}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <p class="sub_heading">Message : 
+                    <textarea name="message" id="message" cols="40" placeholder="Message for Influencer..." rows="2"></textarea>
+                </p>
+                <p class="sub_heading">Requirements : 
+                    <textarea name="requirements" id="requirements" cols="40" placeholder="Requirements..." rows="2"></textarea>
+                </p>
+                <p>
+                    Payment Amount : 
+                    <input type="payment_amount" name="payment_amount" id="payment_amount" required>
+                </p>
+                <br>
+                <button id="submit">Send Ad Request</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

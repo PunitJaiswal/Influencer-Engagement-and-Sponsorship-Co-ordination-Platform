@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Influencer Registration</h1>
+    <form action="/influencer/edit_profile/{{inf.id}}" method="POST" class="login_form">
+        <div action="" class="input_box">
+            <br>
+            <p class="sub_heading">Full Name : 
+                <input name="fullname" type="text" placeholder="Full Name" value="{{inf.fullname}}" required>
+            </p>
+            <p class="sub_heading">Email : 
+                <input name="email" type="email" placeholder="Email" value="{{inf.email}}" required>
+            </p>
+            <p class="sub_heading">Username : 
+                <input name="username" type="text" placeholder="Username" value="{{inf.username}}" required>
+            </p>
+            <p class="sub_heading">Platform : 
+                <select name="platform" id="usertype" value="{{inf.platform}}" required>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Youtube">Youtube</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Twitch">Twitch</option>
+                </select>
+            </p>
+            <p class="sub_heading">Niche : 
+                <select name="niche" id="usertype" value="{{inf.niche}}" required>
+                    <option value="Tech">Tech</option>
+                    <option value="Fashion & Beauty">Fashion & Beauty</option>
+                    <option value="Fitness & Wellness">Fitness and Wellness</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Food">Food</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Finance">Finance</option>
+                </select>
+            </p>
+            <p name="followers" class="sub_heading">Followers : 
+                <input name='followers' type="integer" placeholder="Followers" value="{{inf.followers}}" required>
+            </p>
+
+            <button id="submit">Change Details</button>
+            <br>
+        </div>
+    </form>    
+</body>
+</html>

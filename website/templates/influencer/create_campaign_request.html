@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer's Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="login_form">
+            <form action="/influencer/{{inf.id}}/create_campaign_request/{{camp.id}}" method="POST" class="input_box">
+                <h1><u>Send Campaign Request</u></h1>
+                <h3>{{msg}}</h3>
+                <p class="sub_heading">Campaign Name : 
+                    <input type="text" value="{{camp.name}}" readonly>
+                </p>
+                <br>
+                <p class="sub_heading">Message : 
+                    <textarea name="message" id="message" cols="40" placeholder="Message for Influencer..." rows="2"></textarea>
+                </p>
+                <p>
+                    Payment Amount : 
+                    <input type="payment_amount" name="payment_amount" id="payment_amount" required>
+                </p>
+                <br>
+                <button id="submit">Send Request</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Campaign Dasahboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Sponsor's Dashboard</h1>
+        <div>
+            <button><a href="/sponsor/dash_profile/{{spon.username}}">Profile</a></button>
+            <button class="open_button"><a href="/sponsor/dash_campaign/{{spon.id}}">Campaign</a></button>
+            <button><a href="/sponsor/dash_find/{{spon.id}}">Search Influencer</a></button>
+            <button><a href="/sponsor/dash_stats/{{spon.id}}">Stats</a></button>
+            <button><a href="auth/user_logout">Logout</a></button>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h1><u>All Campaigns :</u></h1>
+        <br>
+
+        {% if camps %}
+            <table class="view_table">
+                <thead class="table_head">
+                    <tr>
+                        <td><h3>Name</h3></td>
+                        <td><h3>Start Date</h3></td>
+                        <td><h3>End Date</h3></td>
+                        <td><h3>Action</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for camp in camps %}
+                    <tr>
+                        <td>{{camp.name}}</td>
+                        <td>{{camp.start_date}}</td>
+                        <td>{{camp.end_date}}</td>
+                        <td>
+                            <a class="view_link" href="/sponsor/view_campaign/{{camp.id}}">View</a> ||
+                            <a class="accept_link" href="/sponsor/edit_campaign/{{camp.id}}">Edit</a> ||
+                            <a class="reject_link" href="/sponsor/delete_campaign/{{camp.id}}">Delete</a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Campaigns...</p>
+            {% endif %}
+
+        <div style="text-align: center; margin-top: 3vmin;">
+            <button style="background-color: rgb(158, 134, 255);"><a href="/sponsor/add_campaign/{{spon.id}}">Add Campaign</a></button>
+        </div>
+
+        <br><br>
+        
+        <h1><u>Send Ad Requests :</u></h1>
+        <br>
+        {% if send_data %}
+            <table class="view_table">
+                <thead class="table_head">
+                    <tr>
+                        <td><h3>Campaign Name</h3></td>
+                        <td><h3>Influencer Name</h3></td>
+                        <td><h3>Payment Amount</h3></td>
+                        <td><h3>Status</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in send_data.items() %}
+                    <tr>
+                        <td>{{value[0]}}</td>
+                        <td>{{value[1]}}</td>
+                        <td>{{value[2]}}</td>
+                        <td>{% if value[3]=='Pending' %}
+                            <p class="pending_link">Pending</p>
+                            {% elif value[3]=='Accepted' %} 
+                            <p class="accept_link">Accepted by Influencer</p>
+                            {% else %}
+                            <p class="reject_link">Rejected by Influencer</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Active Camapigns...</p>
+            {% endif %}
+
+
+            <h1><u>Recieved Ad Requests :</u></h1>
+        <br>
+        {% if recieved_data %}
+            <table class="view_table">
+                <thead class="table_head">
+                    <tr>
+                        <td><h3>Campaign Name</h3></td>
+                        <td><h3>Influencer Name</h3></td>
+                        <td><h3>Message</h3></td>
+                        <td><h3>Payment Amount</h3></td>
+                        <td><h3>Action</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in recieved_data.items() %}
+                    <tr>
+                        <td>{{value[0]}}</td>
+                        <td>{{value[1]}}</td>
+                        <td>{{value[4]}}</td>
+                        <td>{{value[2]}}</td>
+                        <td>
+                            {% if value[3] == 'Pending' %}
+                            <a class="accept_link" href="/sponsor/{{spon.id}}/accept_request/{{key}}">Accept</a> || 
+                            <a class="reject_link" href="/sponsor/{{spon.id}}/reject_request/{{key}}">Reject</a>
+                            {% elif value[3] == 'Accepted' %}
+                            <p class="accept_link">Accepted</p>
+                            {% else %}
+                            <p class="reject_link">Rejected</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Active Camapigns...</p>
+            {% endif %}
+
+            <br><br>
+    </div>
+</body>
+</html>

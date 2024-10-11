@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Find Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Admin's Dashboard</h1>
+        <div>
+            <button><a href="/admin/dash_info">Info</a></button>
+            <button class="open_button"><a href="/admin/dash_find">Manage Users/Campaigns</a></button>
+            <button><a href="/auth/admin_logout">Logout</a></button>
+        </div>
+    </nav>
+    
+    <div class="dashboard">
+        <br><br>
+
+        <h2><u>All Campaigns:</u></h2>
+        <br>
+        {% if camps %}
+        <br>
+        <table class="view_table">
+            <thead class="table_head">
+                <tr>
+                    <td><h3>Id</h3></td>
+                    <td><h3>Name</h3></td>
+                    <td><h3>Deadline</h3></td>
+                    <td><h3>Action</h3></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for camp in camps %}
+                <tr>
+                    <td>{{camp.id}}</td>
+                    <td>{{camp.name}}</td>
+                    <td>{{camp.end_date}}</td>
+                    <td>
+                        <a class="view_link" href="/admin/view_campaign/{{camp.id}}">View</a> ||
+                        {% if camp.is_flag==False %}
+                        <a class='reject_link' href="/admin/flag_campaign/{{camp.id}}">Flag</a>
+                        {% else %}
+                        <a class="accept_link" href="/admin/flag_campaign/{{camp.id}}">UnFlag</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No Campaigns yet</p>
+        {% endif %}
+        <br><br><br><br>
+
+
+        <h2><u>Influencer's List,</u></h2>
+        <br>
+        {% if infs %}
+        <table class="view_table">
+            <thead class="table_head">
+                <tr>
+                    <td><h3>Id</h3></td>
+                    <td><h3>Name</h3></td>
+                    <td><h3>Niche</h3></td>
+                    <td><h3>Action</h3></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inf in infs %}
+                <tr>
+                    <td>{{inf.id}}</td>
+                    <td>{{inf.fullname}}</td>
+                    <td>{{inf.niche}}</td>
+                    <td>
+                      <a class="view_link" href="/admin/view_influencer/{{inf.id}}">View</a> ||
+                      {% if inf.is_flag==False %}
+                      <a class="reject_link" href="/admin/flag_influencer/{{inf.id}}">Flag</a>
+                      {% else %}
+                      <a class="accept_link" href="/admin/flag_influencer/{{inf.id}}">UnFlag</a>
+                      {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No Influencers registered..</p>
+        {% endif %}
+        <br><br><br><br>
+
+        <h2><u>Sponsor's List,</u></h2>
+        <br>
+        {% if spons %}
+        <table class="view_table">
+            <thead class="table_head">
+                <tr>
+                    <td><h3>Id</h3></td>
+                    <td><h3>Name</h3></td>
+                    <td><h3>Company Name</h3></td>
+                    <td><h3>Action</h3></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for spon in spons %}
+                <tr>
+                    <td>{{spon.id}}</td>
+                    <td>{{spon.fullname}}</td>
+                    <td>{{spon.company_name}}</td>
+                    <td>
+                      <a class="view_link" href="/admin/view_sponsor/{{spon.id}}">View</a> ||
+                      {% if spon.is_flag==False %}
+                      <a class="reject_link" href="/admin/flag_sponsor/{{spon.id}}">Flag</a>
+                      {% else %}
+                      <a class="accept_link" href="/admin/flag_sponsor/{{spon.id}}">UnFlag</a>
+                      {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No Sponsors Registered..</p>
+        {% endif %}
+
+        <br><br><br><br>
+    </div>
+</body>
+</html>

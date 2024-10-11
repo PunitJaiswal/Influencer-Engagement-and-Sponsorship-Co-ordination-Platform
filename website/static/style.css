@@ -1,0 +1,391 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color:antiquewhite;
+}
+
+.container{
+    text-align: center;   
+}
+
+h1{
+    margin-top: 20px;
+    font-size: 40px;
+    text-align: center;
+    color: maroon;
+}
+
+.login_form{
+    margin-top: 5vmin;
+    height: auto;
+    width:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_box{
+    background-color: ivory;
+    text-align: center;
+    width: 80vmin;
+    height:auto;
+    border: 1px solid black;
+    border-radius: 5vmin;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+.sub_heading{
+    margin: 1vmin;
+    font-size: 3vmin;
+}
+
+input{
+    height: 4vmin;
+    width: 30vmin;
+    border: none;
+    background-color:antiquewhite;
+    border-radius: 2vmin;
+    padding-left: 2vmin;
+}
+
+input::placeholder{
+    text-align: center;
+    color: gray;
+}
+
+#submit{
+    color: black;
+    background-color: gray;
+    margin: 2vmin;
+    height:4vmin;
+    width: auto;
+    padding-left: 2vmin;
+    padding-right: 2vmin;
+    cursor: pointer;
+    border-radius: 2vmin;
+    border: 1px solid black;
+}
+
+.usr_reg{
+    height: 7vmin;
+    width: 40vmin;
+    border-radius: 20vmin;
+    gap: 2vmin;
+    margin-top: 5vmin;
+    justify-content: right;
+}
+
+a{
+    text-decoration: none;
+}
+
+.reg-btn{
+    background-color: #8ec5c5;
+    height: 5vmin;
+    width: 25vmin;
+    cursor: pointer;
+    border-radius: 2vmin;
+    border: 1px solid black;
+    margin-bottom: 5vmin;
+    margin-left: 3vmin;
+    margin-right: 3vmin;
+}
+
+#usertype{
+    background-color: antiquewhite;
+    text-align: center;
+    /* margin: 2vmin; */
+    height:4vmin;
+    width: 30vmin;
+    border-radius: 2vmin;
+    border: 1px solid black;
+}
+
+.pre_submit{
+    margin-bottom: 5vmin;
+}
+
+
+.dashboard{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.dashboard button{
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-right: 5vmin;
+}
+
+button a{
+    text-decoration: none;
+    color: black;
+    margin: 2vmin;
+    height:4vmin;
+    width: 10vmin;
+}
+
+.navbar button{
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-right: 5vmin;
+}
+
+.navbar .open_button{
+    background-color: paleturquoise;
+}
+
+.navbar{
+    text-align: center;
+    background-color: gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1{
+    margin-left: 3vmin;
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
+}
+
+.Campaigns h3{
+    margin-top: 5vmin;
+}
+
+.campaign{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px 0 0;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.search-filter{
+    height: 10vmin;
+    margin-top: 3vmin;
+    display: flex; /* Use flexbox for layout */
+    justify-content: right; /* Gap between input boxes */
+}
+
+.search-filter input{
+    padding: 10px; 
+    width: 200px; 
+    box-sizing: border-box; 
+    border: 1px solid black; 
+    border-radius: 5px;
+    font-size: 16px; 
+}
+
+.profile{
+    width: 30%;
+    float: left;
+    text-align: center;
+}
+
+.profile img{
+    margin-top: 5vmin;
+    margin-bottom: 5vmin;
+    text-align: center;
+    padding: 3vmin 1vmin 3vmin 1vmin;
+}
+
+.profile2{
+    width: 68%;
+    float: right;
+}
+
+.dashboard h1{
+    color: black;
+    text-align: left;
+}
+.profile2 h1{
+    color: black;
+    text-align: left;
+}
+
+.dashboard h1{
+    color: black;
+    text-align: left;
+}
+
+
+.profile h2{
+    color: maroon;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+.dashboard .add_button{
+    background-color: none;
+    border: none;
+}
+
+.add_button img{
+    height: 10vmin;
+    width: 10vmin;
+    border-radius: 10vmin;
+    background-color: bisque;
+}
+
+.add_campaign{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin: 10px 10px 0 0;
+    align-items: center;
+    gap: 5vmin;
+}
+
+#description{
+    background-color: antiquewhite;
+    border-radius: 2vmin;
+    padding-left: 1vmin;
+}
+
+.campaign_heading{
+    background-color: lightgray; 
+    font-weight: bold;
+}
+
+.action_heading{
+    margin-right: 20vmin;
+}
+
+.box{
+    padding: 3vmin;
+    text-align: center;
+    height: 50vmin;
+    width: 35vmin;
+    border-radius: 1rem;
+    background-color:#E1DEE3;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    color:#1B2F33;
+}
+
+.dashboard .view_button{
+    background-color: paleturquoise;
+    margin: 1vmin;
+}
+
+.dashboard .accept_button{
+    background-color: darkseagreen;
+    margin: 1vmin;
+}
+
+.dashboard .reject_button{
+    background-color: salmon;
+    margin: 1vmin;
+}
+
+.add_campaign .back_button{
+    background-color: rgb(114, 104, 104);
+    margin: 1vmin;
+}
+
+.view_box{
+    text-align: center;
+    padding: 3vmin;
+    height: 70vmin;
+    width: 60vmin;
+    border-radius: 1rem;
+    background-color:#E1DEE3;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    color:#1B2F33;
+}
+
+.view_table{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: justify;
+}
+
+.table_head{
+    background-color: lightgray;
+}
+
+td, th{
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+.msg{
+    color: red;
+    margin: 3vmin;
+}
+
+.dashboard .edit_button{
+    background-color: lightseagreen;
+}
+
+.dashboard .seach_box{
+    background-color: red;
+}
+
+.dashboard .accept_link{
+    color: green;
+    font-weight: bold;
+}
+
+.dashboard .reject_link{
+    color: red;
+    font-weight: bold;
+}
+.dashboard .view_link{
+    color: rgb(0, 189, 189);
+    font-weight: bold;
+}
+
+.dashboard .active_link{
+    color: rgb(28, 97, 246);
+    font-weight: bold;
+}
+.dashboard .pending_link{
+    color: orange;
+    font-weight: bold;
+}
+
+.stat_table{
+    text-align: center;
+    background-color: lightgray;
+    border: 1px solid black;
+    width: 60%;
+    justify-content: center;
+    height: 20vmin;
+}
+
+.stat_table th{
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+.stat_table td{
+    text-align: center;
+    border: 1px solid black;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.graph_container{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4vmin;
+}

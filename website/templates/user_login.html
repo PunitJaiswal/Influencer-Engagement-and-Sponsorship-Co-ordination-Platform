@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>User Login</h1>
+    <form action="/auth/user_login" method='POST' class="login_form">
+        <div class="input_box">
+            <p class="msg">{{msg}}</p>
+            <p class="sub_heading">Select User Type</p>
+                <select name='role' id="usertype">
+                    <option value="Select User">-----Select User-----</option>
+                    <option value="Influencer">Influencer</option>
+                    <option value="Sponsor">Sponsor</option>
+                </select>
+                <br><br>
+                <p class="sub_heading">Username</p>
+                <input type="text" name="uname" placeholder="Email">
+                <p class="sub_heading">Password</p>
+                <input type="password" name="pwd" placeholder="Password">
+                <br>
+                <button id="submit">Login</button>
+                <br>
+                <br>
+                <button class="reg-btn">
+                    <a href="/auth/influencer_registration">Influencer Registration</a>
+                </button>
+                <button class="reg-btn">
+                    <a href="/auth/sponsor_registration">Sponsor Registration</a>
+                </button>
+            </div>
+        </form>    
+</body>
+</html>

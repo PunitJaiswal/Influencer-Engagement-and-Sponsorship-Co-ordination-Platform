@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Find Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Influencer's Dashboard</h1>
+        <div>
+            <button><a href="/influencer/dash_profile/{{inf.username}}">Profile</a></button>
+            <button class="open_button"><a href="/influencer/dash_find/{{inf.id}}">Campaigns/Requests</a></button>
+            <button><a href="/influencer/dash_stats/{{inf.id}}">Stats</a></button>
+            <button><a href="/auth/user_logout">Logout</a></button>
+        </div>
+    </nav>
+    
+    <div class="dashboard">
+        <div class="search-filter">
+            <form action="/influencer/{{inf.id}}/search_campaign" method="POST">
+                <input type="text" name="name" placeholder="Campaign Name">
+                <button class="accept_button">Search Campaign</button>
+            </form>
+    </div>
+
+        <h2><u>Public Campaigns :</u></h2>
+        <br>
+        {% if camps %}
+        <table class="view_table">
+            <thead class="table_head">
+                <tr>
+                <td><h3>Id</h3></td>
+                    <td><h3>Name</h3></td>
+                    <td><h3>Visibility</h3></td>
+                    <td><h3>Budget</h3></td>
+                    <td><h3>Deadline</h3></td>
+                    <td><h3>Action</h3></td>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for camp in camps %}
+                    <tr>
+                        <td>{{camp.id}}</td>
+                        <td>{{camp.name}}</td>
+                        <td>{{camp.visibility}}</td>
+                        <td>{{camp.budget}}</td>
+                        <td>{{camp.end_date}}</td>
+                        <td>
+                            <a class="view_link" href="/influencer/{{inf.id}}/view_campaign/{{camp.id}}">View</a> ||
+                            <a class="active_link" href="/influencer/{{inf.id}}/create_campaign_request/{{camp.id}}">Request</a> 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for camp in private_camps %}
+                    <tr>
+                        <td>{{camp.id}}</td>
+                        <td>{{camp.name}}</td>
+                        <td>{{camp.visibility}} ({{camp.niche}})</td>
+                        <td>{{camp.budget}}</td>
+                        <td>{{camp.end_date}}</td>
+                        <td>
+                            <a class="view_link" href="/influencer/{{inf.id}}/view_campaign/{{camp.id}}">View</a> ||
+                            <a class="active_link" href="/influencer/{{inf.id}}/create_campaign_request/{{camp.id}}">Request</a> 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No campaigns yet</p>
+            {% endif %}
+            <br><br>
+
+
+            <h2><u>Send Requests :</u></h2>
+            <br>
+            {% if send_data %}
+            <table class="view_table">
+                <thead class="table_head">
+                    <tr>
+                        <td><h3>Campaign Name</h3></td>
+                        <td><h3>Company Name</h3></td>
+                        <td><h3>Message</h3></td>
+                        <td><h3>Payment Amount</h3></td>
+                        <td><h3>Status</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in send_data.items() %}
+                    <tr>
+                        <td>{{value[0]}}</td>
+                        <td>{{value[1]}}</td>
+                        <td>{{value[2]}}</td>
+                        <td>{{value[3]}}</td>
+                        <td>
+                            {% if value[4]=='Pending' %}
+                            <p class="pending_link"><a class="active_link" href="/influencer/{{inf.id}}/view_campaign/{{value[5]}}">View</a> || Pending</p>
+                            {% elif value[4]=='Accepted' %}
+                            <p class="accept_link"><a class="active_link" href="/influencer/{{inf.id}}/view_campaign/{{value[5]}}">View</a> || Accepted by Sponsor</p>
+                            {% else %}
+                            <p class="reject_link">Rejected by Sponsor </p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Ad Requests yet</p>
+            {% endif %}
+            <br><br>
+
+            <h2><u>Recieved Requests :</u></h2>
+            <br>
+            {% if recieved_data %}
+            <table class="view_table">
+                <thead class="table_head">
+                    <tr>
+                        <td><h3>Campaign Name</h3></td>
+                        <td><h3>Company Name</h3></td>
+                        <td><h3>Requirement</h3></td>
+                        <td><h3>Payment Amount</h3></td>
+                        <td><h3>Action</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in recieved_data.items() %}
+                    <tr>
+                        <td>{{value[0]}}</td>
+                        <td>{{value[1]}}</td>
+                        <td>{{value[2]}}</td>
+                        <td>{{value[3]}}</td>
+                        <td>
+                            {% if value[4]=='Pending' %}
+                            <a class="active_link" href="/influencer/{{inf.id}}/view_campaign/{{value[5]}}">View</a> ||
+                            <a class="accept_link" href="/influencer/accept_request/{{key}}">Accept</a> ||
+                            <a class="reject_link" href="/influencer/reject_request/{{key}}">Reject</a>
+                            {% elif value[4]=='Accepted' %}
+
+                            <p class="accept_link"><a class="active_link" href="/influencer/{{inf.id}}/view_campaign/{{value[5]}}">View</a> || Accepted</p>
+                            {% else %}
+                            <p class="reject_link"><a class="active_link" href="/influencer/{{inf.id}}/view_campaign/{{value[5]}}">View</a> || Rejected</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Ad Requests yet</p>
+            {% endif %}
+
+            <br><br>
+    </div>
+</body>
+</html>

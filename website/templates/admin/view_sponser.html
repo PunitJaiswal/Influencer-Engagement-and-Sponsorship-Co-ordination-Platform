@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin View Sponsor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="add_campaign">
+            <div class="view_box">
+                <h1 style="color: maroon; text-align: center; text-decoration: underline;">Sponsor Details</h1>
+                <br>
+                <table class="view_table">
+                    <thead>
+                        <tr>
+                            <th><h3>Sponsor Details</h3></th>
+                            <th><h3>Information</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{spon.fullname}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{spon.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td>{{spon.username}}</td>
+                        </tr>
+                        <tr>
+                            <td>Company</td>
+                            <td>{{spon.company_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="back_button"><a href="/admin/dash_info">Back</a></button>
+                <button class="reject_button"><a href="#">Flag</a></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

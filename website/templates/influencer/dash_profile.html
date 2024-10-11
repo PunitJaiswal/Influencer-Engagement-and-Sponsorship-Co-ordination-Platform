@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Profile Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Influencer's Dashboard</h1>
+        <div>
+            <button class="open_button"><a href="/influencer/dash_profile/{{inf.username}}">Profile</a></button>
+            <button><a href="/influencer/dash_find/{{inf.id}}">Campaigs/Requests</a></button>
+            <button><a href="/influencer/dash_stats/{{inf.id}}">Stats</a></button>
+            <button><a href="/auth/user_logout">Logout</a></button>
+        </div>
+    </nav>
+        
+    <div class="dashboard">
+        <div class="profile">
+            <br><br>
+            <h2><u>Profile Overview</u></h2>
+            <table class="view_table">
+                <thead>
+                    <tr>
+                        <th><h3>Influencer Details</h3></th>
+                        <th><h3>Information</h3></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{inf.fullname}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{inf.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Niche</td>
+                        <td>{{inf.niche}}</td>
+                    </tr>
+                    <tr>
+                        <td>Platform</td>
+                        <td>{{inf.platform}}</td>
+                    </tr>
+                    <tr>
+                        <td>Followers</td>
+                        <td>{{inf.followers}}</td>
+                    </tr>
+                    <tr>
+                        <td>Earning</td>
+                        <td>{{inf.earning}}</td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td>{{inf.rating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button class="edit_button"><a href="/influencer/edit_profile/{{inf.id}}">Edit</a></button>
+        </div>
+
+
+        <div class="profile2">
+            <h1>Welcome {{inf.fullname}},</h1>
+            <br>
+            
+            <h2><u>Active Campaigns : </u></h2>
+            <br>
+            {% if data %}
+            <table class="view_table">
+                <thead class="table_head">
+                    <tr>
+                        <td><h3>Campaign Name</h3></td>
+                        <td><h3>Company Name</h3></td>
+                        <td><h3>Deadline</h3></td>
+                        <td><h3>Completion Status</h3></td>
+                        <td><h3>Payment Status</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in data.items() %}
+                    <tr>
+                        <td>{{value[0]}}</td>
+                        <td>{{value[1]}}</td>
+                        <td>{{value[2]}}</td>
+                        <td>
+                            {% if value[3]==False %}
+                            <a class="active_link" href="/influencer/mark_completed/{{key}}">Mark Completed</a>
+                            {% else %}
+                            <p class="accept_link">Completed</p>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if value[4]==True%}
+                            <p class="accept_link">Payment Recieved</p>
+                            {% else %}
+                            <p class="pending_link">Pending</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Ad Requests yet</p>
+            {% endif %}
+            
+        </div>
+    </div>
+</body>
+</html>

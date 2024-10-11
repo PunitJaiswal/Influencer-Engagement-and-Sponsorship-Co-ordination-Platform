@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor's Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Sponsor's Dashboard</h1>
+        <div>
+            <button class="open_button"><a href="/sponsor/dash_profile/{{spon.username}}">Profile</a></button>
+            <button><a href="/sponsor/dash_campaign/{{spon.id}}">Campaign</a></button>
+            <button><a href="/sponsor/dash_find/{{spon.id}}">Search Influencer</a></button>
+            <button><a href="/sponsor/dash_stats/{{spon.id}}">Stats</a></button>
+            <button><a href="/auth/user_logout">Logout</a></button>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h1>Welcome {{spon.fullname}},</h1>
+        <br>
+        <br>
+        <div class="profile">
+            <h2><u>Profile Overview</u></h2>
+            <table class="view_table">
+                <thead>
+                    <tr>
+                        <th><h3>Sponsor Details</h3></th>
+                        <th><h3>Information</h3></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{spon.fullname}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{spon.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td>{{spon.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td>{{spon.company_name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button class="edit_button"><a href="/sponsor/edit_profile/{{spon.id}}">Edit</a></button>
+        </div>
+
+        <div class="profile2">
+            <h2><u>Active Ad Requests : </u></h2>
+            <br>
+            {% if data %}
+            <table class="view_table">
+                <thead class="table_head">
+                    <tr>
+                        <td><h3>Campaign Name</h3></td>
+                        <td><h3>Influencer Name</h3></td>
+                        <td><h3>Payment</h3></td>
+                        <td><h3>Completed</h3></td>
+                        <td><h3>Payment Status</h3></td>
+                        <td><h3>Review</h3></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in data.items() %}
+                    <tr>
+                        <td>{{value[0]}}</td>
+                        <td>{{value[1]}}</td>
+                        <td>{{value[2]}}</td>
+                        <td>
+                            {% if value[3]==False %}
+                            <p class="pending_link">Pending</p>
+                            
+                            {% else %}
+                            <p class="accept_link">Done</p>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if value[3]==True%}
+                                {% if value[4]==False %}
+                                <a class="active_link" href="/sponsor/make_payment/{{key}}">Make Payment</a>
+                                <td></td>
+                                {% else %}
+                                <p class="accept_link">Done</p>
+                                <td><a class="active_link" href="/sponsor/{{spon.id}}/review_influencer/{{value[5]}}">Review</a></td>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No Ad Requests yet</p>
+            {% endif %}
+            
+        </div>
+    </div>
+
+</body>
+</html>

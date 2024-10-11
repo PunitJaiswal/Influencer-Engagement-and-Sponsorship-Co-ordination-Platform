@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor's Find Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Sponsor's Dashboard</h1>
+        <div>
+            <button><a href="/sponsor/dash_profile/{{spon.username}}">Profile</a></button>
+            <button><a href="/sponsor/dash_campaign/{{spon.id}}">Campaign</a></button>
+            <button class="open_button"><a href="/sponsor/dash_find/{{spon.id}}">Search Influencer</a></button>
+            <button><a href="/sponsor/dash_stats/{{spon.id}}">Stats</a></button>
+            <button><a href="/auth/user_logout">Logout</a></button>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <div class="search-filter">
+                <form action="/sponsor/{{spon.id}}/search_influencer" method="POST">
+                    <input type="text" name="name" placeholder="Enter Name">
+                    <input type="text" name="niche" placeholder="Enter Niche">
+                    <input type="number" name="followers" placeholder="followers">
+                    <button class="accept_button">Search Influencer</button>
+                </form>
+        </div>
+        <p class="msg">{{msg}}</p>
+        <h2><u>Influencer List :</u></h2>
+        <br>
+        {% if infs %}
+        <table class="view_table">
+            <thead class="table_head">
+                <tr>
+                    <td><h3>Name</h3></td>
+                    <td><h3>Niche</h3></td>
+                    <td><h3>Followers</h3></td>
+                    <td><h3>Action</h3></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inf in infs %}
+                <tr>
+                    <td>{{inf.fullname}}</td>
+                    <td>{{inf.niche}}</td>
+                    <td>{{inf.followers}}</td>
+                    <td>
+                        <a class="view_link" href="/sponsor/{{spon.id}}/view_influencer/{{inf.id}}">View</a> ||
+                        <a class="active_link" href="/sponsor/{{spon.id}}/create_request/{{inf.id}}">Request</a>
+                      
+                  </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h3>No Influencers registered</h3>
+        {% endif %}
+        </div>
+
+        <p>{{niche}}</p>
+    </div>
+</body>
+</html>

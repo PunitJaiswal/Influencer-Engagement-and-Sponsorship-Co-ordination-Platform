@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Sponsor Registration</h1>
+    <div class="login_form">
+        <form action="/auth/sponsor_registration" method="POST" class="input_box">
+            <br>
+            <p class="sub_heading">Full Name : 
+                <input name="fullname" type="text" placeholder="Full Name" required>
+            </p>
+            <p class="sub_heading">Email : 
+                <input name="email" type="email" placeholder="Email" required>
+            </p>
+            <p class="sub_heading">Username : 
+                <input name="username" type="text" placeholder="Username" required>
+            </p>    
+            <p class="sub_heading">Company Name : 
+                <input name="company_name" type="text" placeholder="Company Name" required>
+            </p> 
+            <p class="sub_heading">Password : 
+                <input name="pwd" type="password" placeholder="Password" required>
+            </p>
+            <button id="submit">Register</button>
+            <br>
+            <p class="pre_submit">Already Registered
+                <a href="/auth/user_login">Login</a>
+            </p>
+        </form>
+    </div>    
+</body>
+</html>

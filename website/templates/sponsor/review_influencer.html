@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Influencer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+                <br>
+                <div class="login_form">
+                    <form action="/sponsor/{{spon.id}}/review_influencer/{{inf.id}}" method="POST" class="input_box">
+                        <h3>{{msg}}</h3>
+                        <h1><u>Write A Review</u></h1>
+                        <br>
+                        <p class="sub_heading">Write a Review : 
+                            <textarea name="review" id="message" cols="40" placeholder="Message for Influencer..." rows="2"></textarea>
+                        </p>
+                        <p class="sub_heading">Rating : 
+                            <select name="rating" type="number" id="usertype" required>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        </p>
+                        <button id="submit">Submit Review</button>
+                    </form>
+                </div>
+    </div>
+</body>
+</html>

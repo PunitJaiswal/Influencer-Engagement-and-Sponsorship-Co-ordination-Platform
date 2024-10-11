@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Influencer Registration</h1>
+    <form action="/auth/influencer_registration" method="POST" class="login_form">
+        <div action="" class="input_box">
+            <br>
+            <p class="sub_heading" >Full Name : 
+                <input name="fullname" type="text" placeholder="Full Name" required>
+            </p>
+            <p class="sub_heading">Email : 
+                <input name="email" type="email" placeholder="Email" required>
+            </p>
+            <p class="sub_heading" minlength="4">Username : 
+                <input name="username" type="text" placeholder="Username" required>
+            </p>    
+            <p class="sub_heading" minlenght="3">Password : 
+                <input name="pwd" type="password" placeholder="Password" required>
+            </p>
+            <p class="sub_heading">Platform : 
+                <select name="platform" id="usertype" required>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Youtube">Youtube</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Twitch">Twitch</option>
+                </select>
+            </p>
+            <p class="sub_heading">Niche : 
+                <select name="niche" id="usertype" required>
+                    <option value="Tech">Tech</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Fitness">Fitness</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Travel">Travel</option>
+                </select>
+            </p>
+            <p name="followers" class="sub_heading">Followers : 
+                <input name='followers' type="number" placeholder="Followers" required>
+            </p>
+
+            <button id="submit">Register</button>
+            <br>
+            <p class="pre_submit">Already Registered
+                <a href="/auth/user_login">Login</a>
+            </p>
+        </div>
+    </form>    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Campaign Dasahboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="add_campaign">
+            <div class="view_box">
+                <h1 style="color: maroon; text-align: center; text-decoration: underline;">Campaign</h1>
+                <br>
+                <table class="view_table">
+                    <thead>
+                        <tr>
+                            <th><h3>Campaign Details</h3></th>
+                            <th><h3>Information</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{camp.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{camp.description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Start Date</td>
+                            <td>{{camp.start_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>End Date</td>
+                            <td>{{camp.end_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Budget</td>
+                            <td>{{camp.budget}}</td>
+                        </tr>
+                        <tr>
+                            <td>Visibility</td>
+                            <td>{{camp.visibility}}</td>
+                        </tr>
+                        <tr>
+                            <td>Niche</td>
+                            <td>{{camp.niche}}</td>
+                        </tr>
+                        <tr>
+                            <td>Goal</td>
+                            <td>{{camp.goals}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="back_button"><a href="/sponsor/dash_campaign/{{spon.id}}">Back</a></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

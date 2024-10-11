@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor's Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Sponsor's Dashboard</h1>
+        <div>
+            <button><a href="/sponsor/dash_profile/{{spon.username}}">Profile</a></button>
+            <button><a href="/sponsor/dash_campaign/{{spon.id}}">Campaign</a></button>
+            <button><a href="/sponsor/dash_find/{{spon.id}}">Search Influencer</a></button>
+            <button class="open_button"><a href="/sponsor/dash_stats/{{spon.id}}">Stats</a></button>
+            <button><a href="/auth/user_logout">Logout</a></button>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h1>Welcome {{spon.fullname}},</h1>
+        <br><br>
+        <div class="graph_container">
+            {% if adreqs %}
+            <div>
+                <img src="{{ url_for('static', filename='images/spon_adreq_sent_recieved.png') }}" alt="Spon Adrequest Sent and recieved">
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='images/spon_adreq_status.png') }}" alt="Spon Adrequest Status">
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='images/payment_done.png') }}" alt="Spon Adrequest Sent and recieved">
+            </div>
+            {% endif %}
+        </div>
+        <br><br>
+        
+    </div>
+
+</body>
+</html>

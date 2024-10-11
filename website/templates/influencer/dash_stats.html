@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Profile Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Influencer's Dashboard</h1>
+        <div>
+            <button class="open_button"><a href="/influencer/dash_profile/{{inf.username}}">Profile</a></button>
+            <button><a href="/influencer/dash_find/{{inf.id}}">Campaigs/Requests</a></button>
+            <button><a href="#">Stats</a></button>
+            <button><a href="/auth/user_logout">Logout</a></button>
+        </div>
+    </nav>
+        
+    <div class="dashboard">
+        <h1><u>Stats and Graphs :</u></h1>
+        <br><br>
+        <div class="graph_container">
+            {% if adreqs %}
+            <div>
+                <img src="{{ url_for('static', filename='images/inf_adreq_status.png') }}" alt="ad_request_status">
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='images/adreq_sent_recieved.png') }}" alt="Ad Request Send and Recieved">
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='images/completed_adreq.png') }}" alt="Completed Campaigns">
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='images/payment_recieved.png') }}" alt="Payment Recieved From Campaigns">
+            </div>
+            {% endif %}
+        </div>
+        <br><br>
+    </div>
+</body>
+</html>

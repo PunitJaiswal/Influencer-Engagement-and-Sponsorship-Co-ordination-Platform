@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Info Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Admin's Dashboard</h1>
+      <div>
+        <button class="open_button"><a href="/admin/dash_info">Info</a></button>
+        <button><a href="/admin/dash_find">Manage Users/Campaigns</a></button>
+        <button><a href="/auth/admin_logout">Logout</a></button>
+      </div>
+    </nav>
+    <div class="dashboard">
+        <br>
+        <h1>Welcome to Admin Dashboard,</h1>
+        <br>
+
+        <table class="stat_table">
+          <thead>
+            <tr>
+              <th>Total Influencers</th>
+              <th>Total Sponsors</th>
+              <th>Total Campaigns</th>
+              <th>Total Ad Requests</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{counts[0]}}</td>
+              <td>{{counts[1]}}</td>
+              <td>{{counts[2]}}</td>
+              <td>{{counts[3]}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br><br>
+
+        <h1><u>Graphs:</u></h1>
+        <br><br>
+        <div class="graph_container">
+          {% if counts!=[] %}
+          <div>
+            <img src="{{ url_for('static', filename='images/category_count.png') }}" alt="Category Count">
+          </div>
+          {% endif %}
+          {% if counts[0]!=0 %}
+          <div>
+            <img src="{{ url_for('static', filename='images/influencer_niche_count.png') }}" alt="Influencer Flagged">
+          </div>
+          <div>
+            <img src="{{ url_for('static', filename='images/influencer_flagged.png') }}" width="400" height="350" alt="Influencer Flagged">
+          </div>
+          {% endif %}
+          {% if counts[1]!=0 %}
+          <div>
+            <img src="{{ url_for('static', filename='images/sponsor_flagged.png') }}" width="400" height="350" alt="Sponsor Flagged">
+          </div>
+          {% endif %}
+          {% if counts[2]!=0 %}
+          <div>
+            <img src="{{ url_for('static', filename='images/campaign_flagged.png') }}" width="400" height="350" alt="Campaign Flagged">
+          </div>
+          {% endif %}
+          
+        </div>
+        <br><br>
+    </div>
+  </body>
+</html>

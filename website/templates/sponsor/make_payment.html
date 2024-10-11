@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Campaign Dasahboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <div class="add_campaign">
+            <div class="view_box">
+                <br>
+                <div class="login_form">
+                    <form action="/sponsor/make_payment/{{adreq.id}}" method="POST" class="input_box">
+                        <h3>{{msg}}</h3>
+                        <h1><u>Make Payment</u></h1>
+                        <br>
+                        <p class="sub_heading">Card Number : 
+                            <input type="number" name="card_no" class="card_no" required>
+                        </p>
+                        <p class="sub_heading">Valid Till : 
+                            <input type="date" name="valid_till" id="date" required>
+                        </p>
+                        <p class="sub_heading">CVV : 
+                            <input type="number" class="cvv" name="cvv">
+                        </p>
+                        <p class="sub_heading">Payment Amount : 
+                            <input type="number" name="payment_amount", value="{{adreq.payment_amount}}" id="payment_amount" readonly>
+                        </p>
+                        <button id="submit">Pay</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
